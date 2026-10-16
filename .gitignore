@@ -1,0 +1,42 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Client data: NEVER commit
+data/
+
+# Generated fake test cases (rebuild with scripts/make_synthetic_case.py)
+synthetic/
+*.pdf
+*.zip
+*.xlsx
+*.xls
+*.docx
+*.eml
+*.db
+*.sqlite
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Notebooks (may contain outputs with client data)
+*.ipynb
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Personal Claude Code settings
+.claude/settings.local.json
+
+# Client emails: NEVER commit
+*.eml
+*.msg
+*.mbox

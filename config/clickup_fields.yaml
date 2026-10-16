@@ -1,0 +1,68 @@
+# PUBLIC COPY: the real ClickUp IDs were removed. Fill in your own workspace's field and option IDs.
+# ClickUp custom fields the app fills, learned from existing "Update - ..." tasks (2026-10-15).
+# IDs are ClickUp's internal field/option IDs (not secrets). Change values here, no code change needed.
+
+space_id: "<space-id>"   # Digitization Squad (folder = client, list = fund)
+
+fields:
+  engagement_type:      {id: <id-1>, type: labels,
+                         options: {"Update - Customer Request": <id-2>}}
+  service:              {id: <id-3>, type: drop_down,
+                         options: {"Digitization - EO": <id-4>,
+                                   "Digitization - SO": <id-5>}}
+  process_version:      {id: <id-6>, type: drop_down,
+                         options: {"V2": <id-7>,
+                                   "V2 (No Form Structure)": <id-8>,
+                                   "V2 (Ontology)": <id-9>,
+                                   "V3 - Blueprint": <id-10>}}
+  digitized_workflow:   {id: <id-11>, type: labels,
+                         options: {"Fund subscription": <id-12>}}
+  doc_type_received:    {id: <id-13>, type: drop_down,
+                         options: {"Draft": <id-14>,
+                                   "Final": <id-15>,
+                                   "Updated": <id-16>}}
+  doc_received_date:    {id: <id-17>, type: date}
+  front_id:             {id: <id-18>, type: short_text}
+  duplicable:           {id: <id-19>, type: drop_down,
+                         options: {"Yes - Full": <id-20>,
+                                   "Yes - Partially": <id-21>,
+                                   "No": <id-22>}}
+  complexity_level:     {id: <id-23>, type: drop_down,
+                         options: {"Light": <id-24>,
+                                   "Medium": <id-25>,
+                                   "Heavy": <id-26>,
+                                   "Extreme Heavy": <id-27>}}
+  overtime_work:        {id: <id-28>, type: drop_down,
+                         options: {"No": <id-29>}}
+  zero_request:         {id: <id-30>, type: checkbox}
+  pic_role:             {id: <id-31>, type: drop_down,
+                         options: {"DS": <id-32>}}
+  actual_working_hours: {id: <id-33>, type: number}   # read later (Day 5), never written
+
+# Parent task "Update - <fund> - <item>"
+parent:
+  fixed:                     # always the same on update tasks
+    engagement_type: "Update - Customer Request"
+    overtime_work: "No"
+    zero_request: true
+  copy_from_previous:        # fund-level: copied from the fund's latest Update task, else these defaults
+    service: "Digitization - EO"
+    process_version: "V2 (No Form Structure)"
+    digitized_workflow: "Fund subscription"
+  # set per case by the app: doc_type_received, doc_received_date, front_id, duplicable, complexity_level
+
+# Our subtasks (PDF Annotation, CL & UI Fix)
+subtask:
+  fixed:
+    pic_role: "DS"
+    overtime_work: "No"
+    zero_request: true
+
+# Complexity Level is NOT filled by default (Anh, 2026-10-16): it depends on the parent's whole
+# estimate (incl. other teams' subtasks). For reference only, 40 real update tasks suggest, on the
+# PARENT estimate: Light <= 4 h, Medium <= 12 h, Heavy above (Medium/Heavy overlap 9-15 h;
+# Extreme Heavy does not follow hours). Not used by the app.
+complexity_hours:
+  Light: 4
+  Medium: 12
+  Heavy: 1000

@@ -1,0 +1,37 @@
+# Streamlit settings for this app (no secrets here).
+
+[runner]
+# Never print stray Python values on the page (this caused the "audio_input" help text bug)
+magicEnabled = false
+
+[browser]
+# Don't send usage statistics to Streamlit (this app will handle client data)
+gatherUsageStats = false
+
+[client]
+# "viewer": keep the menu with Settings (light/dark switch), hide developer items
+toolbarMode = "viewer"
+
+# Anduin colours (from anduintransact.com): logo blue #48AFF0, navy #162950.
+# Light mode uses a deeper shade of the logo blue so white button text stays readable.
+[theme]
+font = "sans-serif"
+baseRadius = "medium"
+
+[theme.light]
+primaryColor = "#1A7FC4"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#EEF4FB"
+textColor = "#162950"
+
+[theme.light.sidebar]
+backgroundColor = "#F3F7FC"
+
+[theme.dark]
+primaryColor = "#48AFF0"
+backgroundColor = "#0E1A33"
+secondaryBackgroundColor = "#162950"
+textColor = "#E8EEF7"
+
+[theme.dark.sidebar]
+backgroundColor = "#121F3D"

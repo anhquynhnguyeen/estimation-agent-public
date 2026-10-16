@@ -1,0 +1,9 @@
+# Rules that send a case to "Needs attention" instead of "Routine" in the review queue.
+# Any one rule being true is enough.
+
+low_confidence_below: 0.7        # any AI step with confidence under this
+flag_any_logic_change: true      # any Checklist / logic impact
+estimate_above_minutes: 120      # TODO: confirm threshold with manager
+flag_client_question: true       # client asked a question instead of sending documents
+flag_missing_attachments: true   # requested documents missing or not matching
+flag_uncertain_page_type: true   # unsure whether a page has fields

@@ -1,0 +1,34 @@
+# Estimation playbook: the numbers the estimate is built from.
+# Change numbers here, no code change needed.
+# Source: Notion "Guidelines on PDF Annotation Estimation" + Digi team rules (see CLAUDE.md).
+
+# --- Per-item benchmarks, in SECONDS ---
+new_field: 70              # a field added or reworded (annotated from scratch)
+transferred_field: 17      # a field carried over from v1 (only used when mode = "strict_notion")
+embedded_file_swap: 70     # per embedded file swapped, no matter how many pages
+checklist_rule_change: 70  # per Checklist rule / logic change (also means: involve an engineer)
+ui_change: 70              # per annotated field / highlight whose position moved or content changed (UI fix)
+
+# --- Baseline for moving/formatting existing fields, in MINUTES [low, high] ---
+# Picked by how much the fields moved between v1 and v2.
+placement_minutes:
+  none:   [15, 30]   # same format, fields in the same place
+  slight: [30, 45]   # same format, fields shifted
+  great:  [45, 60]   # big layout/font change
+
+# How the placement difference is picked from the comparison (decided by code):
+#   great  = page size or main font changed on a page with fields,
+#            or more than `great_moved_share` of fields moved in non-uniform ways
+#   slight = any field moved (uniform reflows included)
+#   none   = no field moved
+placement_rules:
+  great_moved_share: 0.5
+  uniform_reflow_low_end: true   # "slight" + fields only shifted in uniform reflows -> low end (30 min)
+
+# --- How to estimate updates where pages WITH fields changed ---
+# "baseline_plus_new" (default): placement baseline + 70s x new/reworded fields
+# "strict_notion": 17s x every carried-over field + 70s x new fields
+logic_page_change_mode: baseline_plus_new
+
+# --- Range for parts that have no built-in range ---
+range_spread_pct: 0        # no extra buffer: the 70s benchmarks already include one (Anh, 2026-10-15)
