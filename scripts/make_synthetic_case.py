@@ -301,7 +301,7 @@ def main():
     (OUT / "expected.json").write_text(json.dumps(EXPECTED, indent=2), encoding="utf-8")
 
     fields = [o for o in objects if o["__typename__"] not in ("PdfTextLabelDTO", "PdfTextBlockDTO")]
-    print(f"Synthetic case written to {OUT.relative_to(ROOT)}/")
+    print(f"Synthetic case written to {OUT.relative_to(ROOT) if OUT.is_relative_to(ROOT) else OUT}/")
     print(f"  v1 annotation objects: {len(objects)} ({len(fields)} without text highlights)")
     for f in sorted(OUT.iterdir()):
         print("  -", f.name)
