@@ -4,6 +4,12 @@ An internal hackathon project from the Digitization team at Anduin.
 
 A client sends back an updated subscription document (subdoc). The app works out what changed, estimates the work, and drafts the ClickUp tasks and the Slack update. A person reviews everything and approves it before anything is sent.
 
+## Presentation
+
+How to use the app, step by step, plus the background and first results: **[Estimation Agent – How to use](https://claude.ai/artifact/MAXSb2D8P8Q3cVCKrkM7TX)** (slides).
+
+Try it on the public demo: **https://estimation-agent.streamlit.app/**. It uses a synthetic example case only, so never upload real client documents there.
+
 ## The problem
 
 When the Digitization team finds issues in a client's subdoc, we email the client a list. The client replies, usually with an updated subdoc and a few extra documents. Today, a person has to:
