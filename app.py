@@ -13,7 +13,7 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from src import clickup_fields, db, review, settings
+from src import clickup_fields, db, demo, review, settings
 from src.cases import (case_dir, case_pdfs, doccom_changes, doccom_info, doccom_pdf, save_case,
                        save_doccom_link, send_to_doccom)
 from src.integrations.doccom import DoccomChange, job_id_from_link, repeated_on_most_pages
@@ -250,6 +250,7 @@ def suggested_logic_pages(conn, case_id: int) -> list[int]:
 
 def page_cases():
     st.title("Cases")
+    demo.seed_if_empty()
     conn = db.connect()
     cases = db.list_cases(conn)
     if not cases:

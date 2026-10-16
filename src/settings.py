@@ -36,6 +36,10 @@ SLACK_TEST_CHANNEL = os.getenv("SLACK_TEST_CHANNEL", "").strip()   # channel ID 
 SLACK_WORKSPACE_URL = os.getenv("SLACK_WORKSPACE_URL", "https://your-workspace.slack.com").strip().rstrip("/")
 
 
+# Public demo only: create the synthetic example case when there are no cases (see src/demo.py)
+DEMO_SEED = os.getenv("DEMO_SEED", "1").strip() == "1"
+
+
 def ai_allowed() -> bool:
     """Manager's rule: real data may only go to AI through LiteLLM.
     We require LiteLLM in both modes, so AI never goes anywhere else by accident."""
