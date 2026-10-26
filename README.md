@@ -1,6 +1,6 @@
 # Estimation Agent
 
-An internal hackathon project from the Digitization team at Anduin.
+A hackathon project for Anduin.
 
 A client sends back an updated subscription document (subdoc). The app works out what changed, estimates the work, and drafts the ClickUp tasks and the Slack update. A person reviews everything and approves it before anything is sent.
 
